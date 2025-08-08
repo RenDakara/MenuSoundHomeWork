@@ -28,11 +28,7 @@ public class AudioPlayer : MonoBehaviour
         {
             if (isMuted)
             {
-                _previousVolume = _backGroundMusic.volume;
-                _backGroundMusic.volume = 0f;
-                
-                foreach(var music in _allMusic)
-                    music.volume = 0;
+               ResetVolume();
 
             }
             else
@@ -43,5 +39,14 @@ public class AudioPlayer : MonoBehaviour
                     music.volume = _previousVolume;
             }
         }
+    }
+
+    private void ResetVolume()
+    {
+        _previousVolume = _backGroundMusic.volume;
+        _backGroundMusic.volume = 0f;
+
+        foreach (var music in _allMusic)
+            music.volume = 0;
     }
 }
